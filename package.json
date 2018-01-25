@@ -1,0 +1,32 @@
+{
+  "name": "fpl-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-christoffersen/fpl-tracker.git"
+  },
+  "author": "jackson christoffersen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j-christoffersen/fpl-tracker/issues"
+  },
+  "homepage": "https://github.com/j-christoffersen/fpl-tracker#readme"
+}
