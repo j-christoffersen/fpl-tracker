@@ -1,7 +1,11 @@
 import React from 'react';
 
-class App extends React.component {
-  // TODO
+class App extends React.Component {
+  render() {
+    return (
+      <p>Hello</p>
+    );
+  }
 }
 
-module.exports = App;
+export default App;
