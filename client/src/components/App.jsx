@@ -4,8 +4,13 @@ import React from 'react';
 import SelectedPlayers from '../containers/SelectedPlayers';
 
 const App = () => (
-  <div>
-    <SelectedPlayers />
+  <div className="row">
+    <div className="col-lg-4">
+      <SelectedPlayers />
+    </div>
+    <div>
+      hi
+    </div>
   </div>
 );
 

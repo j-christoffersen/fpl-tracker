@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Selector = props => (
-  <div>
+  <div className="selector">
     <img
       className={`player-img player-img-${props.player.color}`}
       src={`https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/${props.player.photo}`}
