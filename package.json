@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "koa": "^2.4.1",
+    "material-ui": "^0.20.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -25,6 +27,7 @@
   },
   "scripts": {
     "react-dev": "webpack -d --watch",
+    "server-dev": "nodemon server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
