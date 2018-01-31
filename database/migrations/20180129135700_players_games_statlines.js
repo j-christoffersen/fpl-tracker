@@ -10,10 +10,11 @@ exports.up = knex => (
       table.string('name');
       table.integer('teamId').references('teams.id');
       table.string('position');
+      table.string('photo');
     })
     .createTable('games', (table) => {
       table.integer('id').primary();
-      table.integer('gameId').references('games.id');
+      table.integer('gameweekId').references('gameweeks.id');
       table.integer('homeTeamId').references('teams.id');
       table.integer('awayTeamId').references('teams.id');
     })
@@ -33,6 +34,7 @@ exports.up = knex => (
       table.integer('redCards');
       table.integer('saves');
       table.integer('bonus');
+      table.integer('value');
     })
 );
 

@@ -4,26 +4,26 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 const ids = {
-  'Manchester City': 43,
-  'Manchester United': 1,
-  'Chelsea': 8,
-  'Liverpool': 14,
-  'Tottenham Hotspur': 6,
-  'Arsenal': 3,
-  'Leicester City': 13,
-  'Burnley': 90,
-  'Everton': 11,
-  'Watford': 57,
-  'West Ham United': 21,
-  'AFC Bournemouth': 91,
-  'Crystal Palace': 31,
-  'Huddersfield Town': 38,
-  'Newcastle United': 4,
-  'Brighton & Hove Albion': 36,
-  'Stoke City': 110,
-  'Southampton': 20,
-  'West Bromwich Albion': 35,
-  'Swansea City': 80,
+  'Manchester City': 11,
+  'Manchester United': 12,
+  'Chelsea': 5,
+  'Liverpool': 10,
+  'Tottenham Hotspur': 17,
+  'Arsenal': 1,
+  'Leicester City': 9,
+  'Burnley': 4,
+  'Everton': 7,
+  'Watford': 18,
+  'West Ham United': 20,
+  'AFC Bournemouth': 2,
+  'Crystal Palace': 6,
+  'Huddersfield Town': 8,
+  'Newcastle United': 13,
+  'Brighton & Hove Albion': 3,
+  'Stoke City': 15,
+  'Southampton': 14,
+  'West Bromwich Albion': 19,
+  'Swansea City': 16,
 };
 
 const abbreviations = {
@@ -68,6 +68,10 @@ exports.seed = async (knex) => {
     });
   });
 
+  await knex('statlines').del();
+  await knex('games').del();
+  await knex('players').del();
+  await knex('gameweeks').del();
   await knex('teams').del();
 
   return knex('teams').insert(teams);
