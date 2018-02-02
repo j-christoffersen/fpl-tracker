@@ -1,4 +1,4 @@
-module.exports.points = (stats, position) => {
+module.exports.getPoints = (stats, position) => {
   let minutesPoints = 0;
   if (stats.minutes >= 60) {
     minutesPoints = 2;
@@ -28,3 +28,8 @@ module.exports.points = (stats, position) => {
     (-3 * stats.redCards) +
     (-2 * stats.ownGoals);
 };
+
+module.exports.getPhotoUrl = photo => (
+  `https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/${photo}`
+);
+
