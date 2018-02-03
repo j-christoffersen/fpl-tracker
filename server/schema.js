@@ -5,7 +5,7 @@
 //   // GraphQLString,
 // } = require('graphql');
 const { makeExecutableSchema } = require('graphql-tools');
-const { Player } = require('./business');
+const { Player } = require('../database');
 
 const typeDefs = `
   type Player {
@@ -15,8 +15,19 @@ const typeDefs = `
     position: String
     photo: String
     statlines: [Statline]
+    minutes: [Int]
     goalsScored: [Int]
     assists: [Int]
+    cleanSheets: [Int]
+    goalsConceded: [Int]
+    ownGoals: [Int]
+    penaltiesSaved: [Int]
+    penaltiesMissed: [Int]
+    yellowCards: [Int]
+    redCards: [Int]
+    saves: [Int]
+    bonus: [Int]
+    value: [Int]
   }
 
   type Statline {
@@ -48,9 +59,20 @@ const resolvers = {
     players: (_, args) => Player.getAll(args),
   },
   Player: {
-    statlines: (player, args) => player.statlines(),
-    goalsScored: (player, args) => player.goalsScored(),
-    assists: (player, args) => player.assists(),
+    statlines: player => player.getStatlines(),
+    minutes: player => player.minutes(),
+    goalsScored: player => player.goalsScored(),
+    assists: player => player.assists(),
+    cleanSheets: player => player.cleanSheets(),
+    goalsConceded: player => player.goalsConceded(),
+    ownGoals: player => player.ownGoals(),
+    penaltiesSaved: player => player.penaltiesSaved(),
+    penaltiesMissed: player => player.penaltiesMissed(),
+    yellowCards: player => player.yellowCards(),
+    redCards: player => player.redCards(),
+    saves: player => player.saves(),
+    bonus: player => player.bonus(),
+    value: player => player.value(),
   },
 };
 
