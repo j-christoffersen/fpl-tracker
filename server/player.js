@@ -9,12 +9,16 @@ class Player {
     this.photo = data.photo;
   }
 
-  static async get(_, args) {
-    const data = await knex('players').where({
-      id: args.id,
-    });
+  static async get(args) {
+    const data = await knex('players').where(args);
 
     return new Player(data[0]);
+  }
+
+  static async getAll(args) {
+    const data = await knex('players').where(args);
+
+    return data.map(datum => new Player(datum));
   }
 }
 
