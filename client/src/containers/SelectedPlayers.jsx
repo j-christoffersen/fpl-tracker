@@ -4,7 +4,7 @@ import Players from '../components/Players';
 
 const mapStateToProps = state => (
   {
-    players: state,
+    players: state.players,
   }
 );
 
