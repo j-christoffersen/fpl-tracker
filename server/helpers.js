@@ -29,7 +29,3 @@ module.exports.getPoints = (stats, position) => {
     (-2 * stats.ownGoals);
 };
 
-module.exports.getPhotoUrl = photo => (
-  `https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/${photo}`
-);
-

@@ -30,6 +30,10 @@ class Player extends DbModel {
     return this.statlines;
   }
 
+  async minutes() {
+    return (await this.getStatlines()).map(statline => statline.minutes);
+  }
+
   async goalsScored() {
     return (await this.getStatlines()).map(statline => statline.goalsScored);
   }
@@ -38,8 +42,16 @@ class Player extends DbModel {
     return (await this.getStatlines()).map(statline => statline.assists);
   }
 
+  async cleanSheets() {
+    return (await this.getStatlines()).map(statline => statline.cleanSheets);
+  }
+
   async goalsConceded() {
     return (await this.getStatlines()).map(statline => statline.goalsConceded);
+  }
+
+  async ownGoals() {
+    return (await this.getStatlines()).map(statline => statline.ownGoals);
   }
 
   async penaltiesSaved() {
@@ -68,10 +80,6 @@ class Player extends DbModel {
 
   async value() {
     return (await this.getStatlines()).map(statline => statline.value);
-  }
-
-  async x() {
-    return (await this.getStatlines()).map(statline => statline.x);
   }
 }
 

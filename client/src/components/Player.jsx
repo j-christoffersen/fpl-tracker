@@ -5,7 +5,7 @@ const Selector = props => (
   <div className={`selector selector-${props.player.color}`}>
     <img
       className="player-img"
-      src={`https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/${props.player.photo}`}
+      src={props.player.photoUrl}
       alt={props.player.name}
     />
     <div className="player-title">{props.player.name}</div>
