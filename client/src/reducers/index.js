@@ -1,5 +1,8 @@
 const initialState = {
+  loading: true,
+  playerList: [],
   players: [],
+  stats: [],
 };
 
 export default (state = initialState, action) => {
@@ -11,6 +14,19 @@ export default (state = initialState, action) => {
         });
       }
       return state;
+    case 'ADD_STAT':
+      if (state.players.indexOf(action.statName) === -1) {
+        return Object.assign({}, state, {
+          stats: [...state.stats, action.statName],
+        });
+      }
+      return state;
+    case 'SET_PLAYER_LIST':
+      console.log('hello');
+      return Object.assign({}, state, {
+        loading: false,
+        playerList: action.players,
+      });
     default:
       return state;
   }

@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 import Search from '../components/Search';
 import { addPlayer } from '../actions';
 
-const mapDispatchToProps = dispatch => (
-  {
-    onClick: (id) => {
-      dispatch(addPlayer(id));
-    },
-  }
-);
+const mapStateToProps = state => ({
+  players: state.playerList,
+});
 
-const AddPlayer = connect(null, mapDispatchToProps)(Search);
+const mapDispatchToProps = dispatch => ({
+  onClick: (name) => {
+    dispatch(addPlayer(name));
+  },
+});
+
+const AddPlayer = connect(mapStateToProps, mapDispatchToProps)(Search);
 
 export default AddPlayer;

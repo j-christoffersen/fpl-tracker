@@ -48,7 +48,7 @@ const typeDefs = `
   }
 
   type Query {
-    player(id: Int!): Player
+    player(id: Int, name: String): Player
     players: [Player]
   }
 `;
