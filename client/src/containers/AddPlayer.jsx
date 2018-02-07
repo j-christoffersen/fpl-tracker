@@ -4,7 +4,8 @@ import Search from '../components/Search';
 import { addPlayer } from '../actions';
 
 const mapStateToProps = state => ({
-  players: state.playerList,
+  items: state.playerList,
+  buttonString: 'Add Player',
 });
 
 const mapDispatchToProps = dispatch => ({

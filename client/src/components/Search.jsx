@@ -21,15 +21,17 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <input list="players" onChange={this.onInputUpdate} />
-        <datalist id="players">
+        <input list="items" onChange={this.onInputUpdate} />
+        <datalist id="items">
           {
-            this.props.players.map(player => (
-              <option value={player.name} key={player.id} />
+            this.props.items.map(item => (
+              <option value={item.name} key={item.id} />
             ))
           }
         </datalist>
-        <button onClick={() => { this.props.onClick(this.state.text); }} > Add Player </button>
+        <button onClick={() => { this.props.onClick(this.state.text); }} >
+          {this.props.buttonString}
+        </button>
       </div>
     );
   }
@@ -37,10 +39,11 @@ class Search extends React.Component {
 
 Search.propTypes = {
   onClick: PropTypes.func.isRequired,
-  players: PropTypes.arrayOf(PropTypes.shape({
+  items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
   })).isRequired,
+  buttonString: PropTypes.string.isRequired,
 };
 
 export default Search;

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import SelectedPlayers from '../containers/SelectedPlayers';
 import AddPlayer from '../containers/AddPlayer';
+import SetStat from '../containers/SetStat';
+import StatsGraph from '../containers/StatsGraph';
 
 import { init } from '../actions';
 
@@ -14,10 +16,18 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="row">
-        <AddPlayer />
-        <div className="col-lg-4 selectors">
-          <SelectedPlayers />
+      <div className="container .bg-primary">
+        <div className="row">
+          <AddPlayer />
+          <SetStat />
+        </div>
+        <div className="row">
+          <div className="col-lg-4 selectors">
+            <SelectedPlayers />
+          </div>
+          <div className="col">
+            <StatsGraph />
+          </div>
         </div>
       </div>
     );

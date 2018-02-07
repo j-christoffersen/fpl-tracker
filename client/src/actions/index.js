@@ -29,12 +29,10 @@ export const addPlayer = async (name) => {
   };
 };
 
-export const addStat = (statName) => {
-  return {
-    statName,
-    type: 'ADD_STAT',
-  };
-};
+export const setStat = statName => ({
+  statName,
+  type: 'SET_STAT',
+});
 
 // need to get array of players with certain ids from graphql
 // then update players in state
