@@ -5,16 +5,17 @@ import { max } from 'd3-array';
 import { select } from 'd3-selection';
 import { line } from 'd3-shape';
 import { axisBottom, axisLeft } from 'd3-axis';
+import { formatSpecifier } from 'd3-format';
 
 class Graph extends React.Component {
   render() {
     const svg = select(this.node);
 
     const margin = {
-      top: 20,
-      bottom: 20,
-      left: 20,
-      right: 20,
+      top: 50,
+      bottom: 50,
+      left: 50,
+      right: 50,
     };
 
     const xScale = scaleLinear()
@@ -23,7 +24,7 @@ class Graph extends React.Component {
 
     const yScale = scaleLinear()
       .domain([0, max(this.props.data, d => d.value)])
-      .range([0, this.props.height]);
+      .range([this.props.height, 0]);
 
     const sparkLine = line()
       .x(d => xScale(d.gameweek))
@@ -40,9 +41,10 @@ class Graph extends React.Component {
       .scale(xScale)
       .ticks(this.props.data.length);
 
+    const maxRange = max(this.props.data, d => d.value);
     const yAxis = axisLeft()
       .scale(yScale)
-      .ticks(10);
+      .ticks(maxRange < 10 ? maxRange : 10);
 
     return (
       <svg
