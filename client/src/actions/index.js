@@ -14,9 +14,9 @@ export const init = async () => {
   };
 };
 
-export const addPlayer = async (name) => {
+export const addPlayer = async (name, stat) => {
   const response = await axios.post('/graphql', {
-    query: `{ player(name:"${name}") { id name photo } }`,
+    query: `{ player(name:"${name}") { id name photo ${stat} } }`,
   });
 
   const { player } = response.data.data;

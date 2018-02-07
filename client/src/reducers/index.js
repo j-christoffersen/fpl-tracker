@@ -38,8 +38,6 @@ export default (state = initialState, action) => {
         Object.assign(player, action.players.find(e => e.id === player.id))
       ));
 
-      console.log('updating');
-
       return Object.assign({}, state, {
         players,
       });

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Dropdown from '../components/Dropdown';
 import { setStat } from '../actions';
 
-const mapStateToProps = () => ({
+const mapStateToProps = state => ({
   items: [
     'minutes',
     'goalsScored',
@@ -24,6 +24,7 @@ const mapStateToProps = () => ({
     id: i,
   })),
   buttonString: 'Set Stat',
+  stat: state.stat,
 });
 
 const mapDispatchToProps = dispatch => ({

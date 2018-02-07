@@ -5,15 +5,23 @@ import { addPlayer } from '../actions';
 
 const mapStateToProps = state => ({
   items: state.playerList,
-  buttonString: 'Add Player',
+  stat: state.stat,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClick: (name) => {
-    dispatch(addPlayer(name));
+  onClick: (name, stat) => {
+    dispatch(addPlayer(name, stat));
   },
 });
 
-const AddPlayer = connect(mapStateToProps, mapDispatchToProps)(Search);
+const mergeProps = (stateProps, dispatchProps) => (
+  Object.assign({}, {
+    buttonString: 'Add Player',
+    items: stateProps.items,
+    onClick: (name) => { dispatchProps.onClick(name, stateProps.stat); },
+  })
+);
+
+const AddPlayer = connect(mapStateToProps, mapDispatchToProps, mergeProps)(Search);
 
 export default AddPlayer;
