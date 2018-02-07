@@ -34,5 +34,18 @@ export const setStat = statName => ({
   type: 'SET_STAT',
 });
 
+export const updatePlayers = async (stat, playerIds) => {
+  const response = await axios.post('/graphql', {
+    query: `{ players(id: ${JSON.stringify(playerIds)}) { id name ${stat} } }`,
+  });
+
+  const { players } = response.data.data;
+
+  return {
+    players,
+    type: 'UPDATE_PLAYERS',
+  };
+};
+
 // need to get array of players with certain ids from graphql
 // then update players in state
