@@ -49,7 +49,7 @@ const typeDefs = `
 
   type Query {
     player(id: Int, name: String): Player
-    players: [Player]
+    players(id:[Int]): [Player]
   }
 `;
 

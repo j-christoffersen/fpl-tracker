@@ -14,7 +14,16 @@ class DbModel extends Model {
   }
 
   static async getAll(args) {
-    const data = await knex(this.tableName).where(args);
+    let data = knex(this.tableName);
+    Object.entries(args).forEach((entry) => {
+      if (Array.isArray(entry[1])) {
+        data = data.whereIn(entry[0], entry[1]);
+      } else {
+        data = data.where(entry[0], entry[1]);
+      }
+    });
+
+    await data;
 
     return data.map(datum => new this(datum));
   }
