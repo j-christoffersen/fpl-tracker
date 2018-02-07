@@ -5,7 +5,6 @@ import { max } from 'd3-array';
 import { select } from 'd3-selection';
 import { line } from 'd3-shape';
 import { axisBottom, axisLeft } from 'd3-axis';
-import { formatSpecifier } from 'd3-format';
 
 class Graph extends React.Component {
   render() {
