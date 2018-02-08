@@ -1,4 +1,4 @@
-module.exports.getPoints = (stats, position) => {
+module.exports.getTotalPoints = (stats, position) => {
   let minutesPoints = 0;
   if (stats.minutes >= 60) {
     minutesPoints = 2;
@@ -19,7 +19,7 @@ module.exports.getPoints = (stats, position) => {
   return minutesPoints +
     (goalMulti * stats.goalsScored) +
     (3 * stats.assists) +
-    (cleanSheetMulti * stats.cleansheets) +
+    (cleanSheetMulti * stats.cleanSheets) +
     Math.floor(stats.saves / 3) +
     (5 * stats.penaltiesSaved) +
     (-2 * stats.penaltiesMissed) +
@@ -27,5 +27,6 @@ module.exports.getPoints = (stats, position) => {
     (-1 * stats.yellowCards) +
     (-3 * stats.redCards) +
     (-2 * stats.ownGoals);
+
 };
 

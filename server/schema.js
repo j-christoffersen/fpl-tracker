@@ -28,6 +28,7 @@ const typeDefs = `
     saves: [Int]
     bonus: [Int]
     value: [Int]
+    total: [Int]
   }
 
   type Statline {
@@ -73,6 +74,7 @@ const resolvers = {
     saves: player => player.saves(),
     bonus: player => player.bonus(),
     value: player => player.value(),
+    total: player => player.total(),
   },
 };
 

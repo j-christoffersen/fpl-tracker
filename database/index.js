@@ -1,4 +1,5 @@
 const knex = require('./knex.js');
+const { getTotalPoints } = require('./helpers.js');
 
 class Model {
   constructor(data) {
@@ -89,6 +90,10 @@ class Player extends DbModel {
 
   async value() {
     return (await this.getStatlines()).map(statline => statline.value);
+  }
+
+  async total() {
+    return (await this.getStatlines()).map(statline => getTotalPoints(statline));
   }
 }
 
