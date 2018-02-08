@@ -2,7 +2,7 @@ const initialState = {
   loading: true,
   playerList: [],
   players: [],
-  stat: 'goalsScored',
+  stat: 'minutes',
 };
 
 export default (state = initialState, action) => {

@@ -17,33 +17,35 @@ class Graph extends React.Component {
       right: 50,
     };
 
+    const xMax = max(this.props.data.map(row => row.length + 1));
     const xScale = scaleLinear()
-      .domain([1, max(this.props.data, d => d.gameweek)])
+      .domain([1, xMax])
       .range([0, this.props.width]);
 
+    const yMax = max(this.props.data.map(row => max(row, d => d.value)));
     const yScale = scaleLinear()
-      .domain([0, max(this.props.data, d => d.value)])
+      .domain([0, yMax])
       .range([this.props.height, 0]);
 
     const sparkLine = line()
       .x(d => xScale(d.gameweek))
       .y(d => yScale(d.value));
 
-    const linePath = sparkLine(this.props.data);
+    const linePaths = this.props.data.map(row => sparkLine(row));
 
-    const circlePoints = this.props.data.map(d => ({
-      x: xScale(d.gameweek),
-      y: yScale(d.value),
-    }));
+    const circlePointSets = this.props.data.map(row => (
+      row.map(d => ({
+        x: xScale(d.gameweek),
+        y: yScale(d.value),
+      }))));
 
     const xAxis = axisBottom()
       .scale(xScale)
       .ticks(this.props.data.length);
 
-    const maxRange = max(this.props.data, d => d.value);
     const yAxis = axisLeft()
       .scale(yScale)
-      .ticks(maxRange < 10 ? maxRange : 10);
+      .ticks(yMax < 10 ? yMax : 10);
 
     return (
       <svg
@@ -53,17 +55,21 @@ class Graph extends React.Component {
       >
         <g style={{ transform: `translate(${margin.left}px, ${margin.right}px)` }}>
           <g className="line">
-            <path d={linePath} />
+            { linePaths.map(linePath => (
+              <path d={linePath} />
+            ))}
           </g>
           <g className="scatter">
-            {circlePoints.map(circlePoint => (
-              <circle
-                cx={circlePoint.x}
-                cy={circlePoint.y}
-                key={`${circlePoint.x},${circlePoint.y}`}
-                r={4}
-              />
-            ))}
+            {circlePointSets.map(circlePointSet => (
+              circlePointSet.map(circlePoint => (
+                <circle
+                  cx={circlePoint.x}
+                  cy={circlePoint.y}
+                  key={`${circlePoint.x},${circlePoint.y}`}
+                  r={4}
+                />
+              ))))
+            }
           </g>
           <g
             className="xAxis"
@@ -80,10 +86,10 @@ class Graph extends React.Component {
 }
 
 Graph.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({
+  data: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({
     gameweek: PropTypes.number,
     value: PropTypes.number,
-  })).isRequired,
+  }))).isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
 };
