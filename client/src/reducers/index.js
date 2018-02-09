@@ -17,7 +17,6 @@ export default (state = initialState, action) => {
     }
 
     case 'REMOVE_PLAYER': {
-      console.log('ssdfasdjk');
       return Object.assign({}, state, {
         players: state.players
           .slice()
