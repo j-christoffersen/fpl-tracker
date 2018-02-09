@@ -27,6 +27,5 @@ module.exports.getTotalPoints = (stats, position) => {
     (-1 * stats.yellowCards) +
     (-3 * stats.redCards) +
     (-2 * stats.ownGoals);
-
 };
 

@@ -29,6 +29,11 @@ export const addPlayer = async (name, stat) => {
   };
 };
 
+export const removePlayer = id => ({
+  id,
+  type: 'REMOVE_PLAYER',
+});
+
 export const setStat = statName => ({
   statName,
   type: 'SET_STAT',

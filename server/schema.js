@@ -6,6 +6,7 @@
 // } = require('graphql');
 const { makeExecutableSchema } = require('graphql-tools');
 const { Player } = require('../database');
+const { accumulate } = require('./helpers.js');
 
 const typeDefs = `
   type Player {
@@ -29,6 +30,7 @@ const typeDefs = `
     bonus: [Int]
     value: [Int]
     total: [Int]
+    cumTotal: [Int]
   }
 
   type Statline {
@@ -75,6 +77,7 @@ const resolvers = {
     bonus: player => player.bonus(),
     value: player => player.value(),
     total: player => player.total(),
+    cumTotal: async player => accumulate(await player.total()),
   },
 };
 

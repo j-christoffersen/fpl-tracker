@@ -16,6 +16,15 @@ export default (state = initialState, action) => {
       return state;
     }
 
+    case 'REMOVE_PLAYER': {
+      console.log('ssdfasdjk');
+      return Object.assign({}, state, {
+        players: state.players
+          .slice()
+          .filter(player => player.id !== action.id),
+      });
+    }
+
     case 'SET_STAT': {
       if (state.players.indexOf(action.statName) === -1) {
         return Object.assign({}, state, {

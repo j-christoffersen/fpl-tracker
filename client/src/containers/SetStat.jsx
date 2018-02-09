@@ -19,6 +19,7 @@ const mapStateToProps = state => ({
     'bonus',
     'value',
     'total',
+    'cumTotal',
   ].map((item, i) => ({
     name: item,
     id: i,
